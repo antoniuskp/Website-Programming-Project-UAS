@@ -46,15 +46,28 @@
         }
 
         .content {
-            margin-left: 275px;
-            float: left;
-            display: flex; 
-            /* boleh pake flex kahh alternatifnyaa? */
-            overflow-x: hidden;
+            display: block;
+            padding-left: 250px;
+            overflow-x: hidden;  
+            justify-content: center;
+            align-items: center;
         }
-
+        .hp{
+            display: flex; 
+            float: left;
+            /* boleh pake flex kahh alternatifnyaa? */
+            flex-wrap: wrap;
+        }
         p{
             font-family: 'Franklin Gothic',sans-serif;
+            text-align: center;
+        }
+        #bandingkan{
+            border-radius: 10px;
+            background-color: white;
+            width: 200px;
+            height: 50px;
+            font-size: larger;
         }
         .nama_hape{
             font-weight: bold;
@@ -111,35 +124,36 @@
         <p class="content-sidePanel" id="toko-hape">WEBPROG CELL</p>
     </div>
     <div class="content">
-        <?php
-        foreach ($arrHape as $hape) {
-            $sku = $hape["SKU"];
-            $merk = $hape["Merk"];
-            $model = $hape["Model"];
-            $harga = number_format($hape["Harga"], 0, ',', '.');
-            $url_gambar = $hape["url_gambar"];
-            echo "<div class='card'>";
-            echo "<img class='img_hape' src='$url_gambar'>";
+        <div class="hp">
+            <?php
+            foreach ($arrHape as $hape) {
+                $sku = $hape["SKU"];
+                $merk = $hape["Merk"];
+                $model = $hape["Model"];
+                $harga = number_format($hape["Harga"], 0, ',', '.');
+                $url_gambar = $hape["url_gambar"];
+                echo "<div class='card'>";
+                echo "<img class='img_hape' src='$url_gambar'>";
 
-            echo "<p class='nama_hape'>$merk $model</p>";
-            echo "<p class='desc'>SKU:$sku</p>";
+                echo "<p class='nama_hape'>$merk $model</p>";
+                echo "<p class='desc'>SKU:$sku</p>";
 
-            echo "<p class='desc'></p>";
-            echo "<p>Rp$harga</p>";
-            foreach ($hape["spec"] as $spec_hape) {
-                echo "<p class='spec'>$spec_hape | </p>";
+                echo "<p class='desc'></p>";
+                echo "<p>Rp$harga</p>";
+                foreach ($hape["spec"] as $spec_hape) {
+                    echo "<p class='spec'>$spec_hape | </p>";
+                }
+                echo "<br>";
+
+                echo "<input type='checkbox' class='checked' id='".$sku."'value='Pilih'".">";
+                echo "<label for='".$sku."'>Pilih </label>";
+                echo "</div>";
+                echo "<br>";
             }
-            echo "<br>";
-
-            echo "<input type='checkbox' class='checked' id='".$sku."'value='Pilih'".">";
-            echo "<label for='".$sku."'>Pilih </label>";
-            echo "</div>";
-            echo "<br>";
-        }
-        ?>
-        <input type="button" value="bandingkan" name="bandingkan" id="bandingkan">
+            ?>
+        </div>
+        <p><input type="button" value="Bandingkan" name="bandingkan" id="bandingkan"></p>
     </div>
-
 </body>
 
 </html>
