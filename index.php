@@ -1,95 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php
+    session_start();
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <style>
-        .side-panel {
-            height: 100%;
-            width: 250px;
-            top: 0;
-            left: 0;
-            position: fixed;
-            /* overflow-x: hidden; */
-            padding-top: 50px;
-            background-color: yellow;
-        }
-
-        #logo {
-            width: 150px;
-            height: 150px;
-            display: block;
-            border-radius: 50%;
-        }
-
-        .card {
-            /* margin-left: 100px; */
-            border-radius: 20px;
-            background-color: white;
-            width: 200px;
-            height: 300px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            padding: 20px;
-            margin: 20px;
-        }
-
-        .content-sidePanel {
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        #toko-hape {
-            padding-top: 5px;
-            text-align: center;
-        }
-
-        .content {
-            display: block;
-            padding-left: 250px;
-            overflow-x: hidden;  
-            justify-content: center;
-            align-items: center;
-        }
-        .hp{
-            display: flex; 
-            float: left;
-            /* boleh pake flex kahh alternatifnyaa? */
-            flex-wrap: wrap;
-        }
-        p{
-            font-family: 'Franklin Gothic',sans-serif;
-            text-align: center;
-        }
-        #bandingkan{
-            border-radius: 10px;
-            background-color: white;
-            width: 200px;
-            height: 50px;
-            font-size: larger;
-        }
-        .nama_hape{
-            font-weight: bold;
-            font-size: 18px;
-        }
-        .spec{
-            display: inline;
-        }
-        .checked{
-            display: inline;
-        }
-        .img_hape{
-            width: 100px;
-            height: auto;
-            margin-left: auto;
-            margin-right: auto;
-        }
-    </style>
-</head>
-
-<body>
-    <?php
     $arrHape = array(
         array("SKU" => "12345", "Merk" => "Samsung", "Model" => "Galaxy S22", "Harga" => 18000000, "url_gambar" => "img/samsung_s22.jpg", "spec" => array("4GB", "5G", "5150mAH", "256GB")),
         array("SKU" => "54321", "Merk" => "Xiaomi", "Model" => "Mi 11 Pro", "Harga" => 9500000, "url_gambar" => "img/xiaomi_mi11.jpeg", "spec" => array("8GB", "5G", "5050mAH", "256GB")),
@@ -116,44 +27,87 @@
         array("SKU" => "88991", "Merk" => "HTC", "Model" => "U12+", "Harga" => 7000000, "url_gambar" => "img/htc.jpg", "spec" => array("6GB", "4G", "3500mAH", "128GB")),
     );
     // tambahkan setidaknya 20 data
-    
+    $_SESSION["arrHape"] = $arrHape;
     ?>
-    
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+    <style></style>
+</head>
+
+<body>
+
     <div class="side-panel">
         <img class="content-sidePanel" src="cat1.jpg" alt="" id="logo">
         <p class="content-sidePanel" id="toko-hape">WEBPROG CELL</p>
     </div>
     <div class="content">
-        <div class="hp">
-            <?php
-            foreach ($arrHape as $hape) {
-                $sku = $hape["SKU"];
-                $merk = $hape["Merk"];
-                $model = $hape["Model"];
-                $harga = number_format($hape["Harga"], 0, ',', '.');
-                $url_gambar = $hape["url_gambar"];
-                echo "<div class='card'>";
-                echo "<img class='img_hape' src='$url_gambar'>";
+        <form action="bandingkan.php" method="get">
+            <div class="hp">
+                <?php
+                foreach ($arrHape as $idx => $hape) {
+                    $sku = $hape["SKU"];
+                    $merk = $hape["Merk"];
+                    $model = $hape["Model"];
+                    $harga = number_format($hape["Harga"], 0, ',', '.');
+                    $url_gambar = $hape["url_gambar"];
+                    echo "<div class='card'>";
+                    echo "<img class='img_hape' src='$url_gambar'>";
 
-                echo "<p class='nama_hape'>$merk $model</p>";
-                echo "<p class='desc'>SKU:$sku</p>";
+                    echo "<p class='nama_hape'>$merk $model</p>";
+                    echo "<p class='desc'>SKU:$sku</p>";
 
-                echo "<p class='desc'></p>";
-                echo "<p>Rp$harga</p>";
-                foreach ($hape["spec"] as $spec_hape) {
-                    echo "<p class='spec'>$spec_hape | </p>";
+                    echo "<p class='desc'></p>";
+                    echo "<p>Rp$harga</p>";
+                    foreach ($hape["spec"] as $spec_hape) {
+                        echo "<p class='spec'>$spec_hape | </p>";
+                    }
+                    echo "<br>";
+
+                    echo "<input type='checkbox' class='checked' id='checked".$idx."'value='$sku' name='checked[]'".">";
+                    echo "<label for='checked".$idx."'>Pilih </label>";
+                    echo "</div>";
+                    echo "<br>";
                 }
-                echo "<br>";
-
-                echo "<input type='checkbox' class='checked' id='".$sku."'value='Pilih'".">";
-                echo "<label for='".$sku."'>Pilih </label>";
-                echo "</div>";
-                echo "<br>";
-            }
-            ?>
-        </div>
-        <p><input type="button" value="Bandingkan" name="bandingkan" id="bandingkan"></p>
+                ?>
+            </div>
+            <p><input type="submit" value="Bandingkan" name="bandingkan" id="bandingkan" disabled></p>
+        </form>
     </div>
+    <script type="text/javascript">
+                $(".checked").click(function(){
+                    let jumChecked = 0;
+                    $(".checked").each(function(index){
+                        if ($(this).is(":checked")) {
+                            jumChecked++;
+                        }
+
+                    });
+
+                    console.log(jumChecked);
+                    if(jumChecked==3){
+                        $(".checked").each(function(index){
+                            if (!$(this).is(":checked")) {
+                                $(this).attr("disabled", true);
+                            }
+                        });
+                        $("#bandingkan").attr("disabled", false);
+                    }
+                    else{
+                        $(".checked").each(function(index) {
+                            $(this).attr("disabled", false);
+                        })
+
+                        $("#bandingkan").attr("disabled", true);
+                    }
+                    });
+            </script>
 </body>
 
 </html>
