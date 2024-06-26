@@ -6,7 +6,12 @@
     position: fixed;
     /* overflow-x: hidden; */
     padding-top: 50px;
-    background-color: yellow;
+    background-color: rgb(255, 87, 31);
+}
+
+.content-sidePanel {
+    margin-left: auto;
+    margin-right: auto;
 }
 
 #logo {
@@ -16,72 +21,129 @@
     border-radius: 50%;
 }
 
-.card {
-    /* margin-left: 100px; */
-    border-radius: 20px;
-    background-color: white;
-    width: 200px;
-    height: 300px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    padding: 20px;
-    margin: 20px;
-}
-
-.content-sidePanel {
-    margin-left: auto;
-    margin-right: auto;
-}
-
 #toko-hape {
     padding-top: 5px;
     text-align: center;
+    color: white;
+    font-size: 22px;
+    font-weight: bold;
 }
 
-.content {
-    display: block;
-    padding-left: 250px;
-    overflow-x: hidden;  
+#credit{
+    color: white;
+    font-size: 12px;
+    margin-top: 130%;
+    padding: 5%;
+}
+
+td{
+    text-align: left;
+}
+
+
+.nama_harga,
+.desc,
+.spec {
+    margin: -1px;
+}
+
+.card {
+    /* margin-left: 100px; */
+    border-radius: 20px;
+    background-color: rgb(255, 255, 255);
+    width: 220px;
+    height: 270px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    margin: 15px;
     justify-content: center;
     align-items: center;
+    text-align: center;
+
 }
-.hp{
-    display: flex; 
+
+body {
+    height: 100%;
+    margin: 0;
+    background-color: rgb(255, 122, 78);
+    /* Warna latar belakang utama */
+}
+
+.blank{
+    height: 150px;
+}
+
+
+.content {
+    height: 100%;
+    display: block;
+    padding-left: 325px;
+    overflow-x: hidden;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(255, 122, 78);
+}
+
+.hp {
+    display: flex;
     float: left;
-    /* boleh pake flex kahh alternatifnyaa? */
     flex-wrap: wrap;
 }
 
-p{
-    font-family: 'Franklin Gothic',sans-serif;
+html {
+    font-family: 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     text-align: center;
 }
-#bandingkan{
-    border-radius: 10px;
-    background-color: white;
-    width: 200px;
+
+#bandingkan {
+    border-radius: 40px;
+    background-color: rgb(255, 87, 31);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 250px;
+    height: 75px;
+    display: block;
+    font-size: larger;
+    position: fixed;
+    margin-left: 30%;
+    margin-top: 43%;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+}
+
+#kembali {
+    border-radius: 30px;
+    background-color: rgb(255, 87, 31);
+    color: white;
+    width: 150px;
     height: 50px;
     font-size: larger;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+
 }
-#kembali{
-    border-radius: 10px;
-    background-color: white;
-    width: 200px;
-    height: 50px;
-    font-size: larger;
-}
-.nama_hape{
+
+.nama_harga {
     font-weight: bold;
     font-size: 18px;
 }
-.spec{
+
+.spec {
     display: inline;
+    font-size: smaller;
 }
-.checked{
-    display: inline;
+
+.checked {
+    font-weight: bold;
+    text-align: center;
+    margin: 0;
+    font-size: larger;
 }
-.img_hape{
-    width: 100px;
-    height: auto;
+
+.img_hape {
+    height: 100px;
+    width: auto;
     margin-left: auto;
     margin-right: auto;
+    margin-bottom: 15px;
+    margin-top: 20px;
 }
