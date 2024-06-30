@@ -43,7 +43,7 @@ $_SESSION["arrHape"] = $arrHape;
 
 <body>
     <div class="side-panel">
-        <img class="content-sidePanel" src="logo.png" alt="" id="logo">
+        <img class="content-sidePanel" src="img/logo.png" alt="" id="logo">
         <p class="content-sidePanel" id="toko-hape">WEBPROG CELL</p>
         <div id="credit">
             <p>Developed By</p>

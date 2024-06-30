@@ -113,14 +113,19 @@ html {
 }
 
 #kembali {
-    border-radius: 30px;
+    border-radius: 40px;
     background-color: rgb(255, 87, 31);
-    color: white;
-    width: 150px;
-    height: 50px;
-    font-size: larger;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-
+    width: 250px;
+    height: 75px;
+    display: block;
+    font-size: larger;
+    position: fixed;
+    margin-left: 60vh;
+    margin-top: 80vh;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
 }
 
 .nama_harga {

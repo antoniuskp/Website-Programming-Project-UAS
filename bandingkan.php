@@ -13,7 +13,7 @@ session_start();
 
 <body>
     <div class="side-panel">
-        <img class="content-sidePanel" src="logo.png" alt="" id="logo">
+        <img class="content-sidePanel" src="img/logo.png" alt="" id="logo">
         <p class="content-sidePanel" id="toko-hape">WEBPROG CELL</p>
     </div>
     <div class="content">
@@ -39,7 +39,6 @@ session_start();
                             echo "<p class='spec'>$spec_hape | </p>";
                         }
                         echo "</div>";
-                        echo "<br>";
                     }
                 }
             }
